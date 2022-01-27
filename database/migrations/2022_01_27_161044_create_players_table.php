@@ -19,9 +19,9 @@ class CreatePlayersTable extends Migration
             $table->string("lastname");
             $table->string("position");
             $table->date("birthdate");
-            $table->string("description");
+            $table->string("description")->nullable();
             $table->boolean("retired");
-            $table->integer("salary");
+            $table->integer("salary")->nullable();
             $table->timestamps();
         });
     }

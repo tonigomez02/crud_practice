@@ -17,11 +17,11 @@
             @csrf
             <div class="mb-3">
                 <label for="" class="form-label">Name</label>
-                <input id="name" name="name" type="text" class="form-control" value="{{old("name")}}">
+                <input id="name" name="name" type="text" class="form-control" value="{{old("name")}}" required>
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Lastname</label>
-                <input id="lastname" name="lastname" type="text" class="form-control "value="{{old("lastname")}}">
+                <input id="lastname" name="lastname" type="text" class="form-control" value="{{old("lastname")}}" required>
             </div>
             <div class="mb-3">
                 <p class="text-primary fs-5">Select postion</p>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Birthdate</label>
-                    <input id="birthdate" name="date" type="date" class="form-control" value="{{old("date")}}">
+                    <input id="birthdate" name="date" type="date" class="form-control" value="{{old("date")}}" required>
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Description</label>
@@ -61,7 +61,7 @@
             <div class="mb-3">
                 <p class="text-primary fs-5">Retired? (only one option)</p>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Yes" {{ old('retired') == 'Yes' ? 'checked' : '' }} name="retired">
+                    <input required class="form-check-input" type="checkbox" value="Yes" {{ old('retired') == 'Yes' ? 'checked' : '' }} name="retired">
                     <label class="form-check-label" for="">
                         Yes
                     </label>
