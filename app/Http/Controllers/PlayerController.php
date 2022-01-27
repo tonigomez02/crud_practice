@@ -13,7 +13,7 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        //
+        return view("players.index");
     }
 
     /**
@@ -23,7 +23,7 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        //
+        return view("players.create");
     }
 
     /**
@@ -34,7 +34,7 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return request()->all();
     }
 
     /**
