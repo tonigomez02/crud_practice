@@ -2,6 +2,17 @@
 
 @section("content")
     <div class="container-sm px-md-5">
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <form action="/players" method="POST" class="container px-md-5">
             @csrf
             <div class="mb-3">
