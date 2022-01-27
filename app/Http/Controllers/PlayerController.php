@@ -34,6 +34,9 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate([
+            "name" => "required"
+        ]);
         return request()->all();
     }
 
