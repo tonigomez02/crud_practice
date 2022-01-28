@@ -47,7 +47,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Birthdate</label>
-                    <input id="birthdate" name="date" type="date" class="form-control" value="{{old("date")}}" required>
+                    <input id="birthdate" name="birthdate" type="date" class="form-control" value="{{old("date")}}" required>
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Description</label>
@@ -61,13 +61,13 @@
             <div class="mb-3">
                 <p class="text-primary fs-5">Retired? (only one option)</p>
                 <div class="form-check">
-                    <input required class="form-check-input" type="checkbox" value="Yes" {{ old('retired') == 'Yes' ? 'checked' : '' }} name="retired">
+                    <input required class="form-check-input" type="checkbox" value="1" {{ old('retired') == 'Yes' ? 'checked' : '' }} name="retired">
                     <label class="form-check-label" for="">
                         Yes
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="No" {{ old('retired') == 'No' ? 'checked' : '' }} name="retired">
+                    <input class="form-check-input" type="checkbox" value="0" {{ old('retired') == 'No' ? 'checked' : '' }} name="retired">
                     <label class="form-check-label" for="">
                         No
                     </label>

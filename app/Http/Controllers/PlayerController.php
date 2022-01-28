@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Player;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreatePlayerRequest;
 
 class PlayerController extends Controller
 {
@@ -32,12 +34,10 @@ class PlayerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePlayerRequest $request)
     {
-        request()->validate([
-            "name" => "required"
-        ]);
-        return request()->all();
+        $player = Player::create($request->all());
+        return redirect("/players");
     }
 
     /**
