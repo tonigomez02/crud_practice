@@ -13,7 +13,7 @@
             </div>
         @endif
 
-        <form action="/players" method="POST" class="container">
+        <form action="{{route("players.store")}}" method="POST" class="container">
             @csrf
             <div class="mb-3">
                 <label for="" class="form-label">Name</label>
@@ -73,7 +73,7 @@
                     </label>
                 </div>
             </div>
-            <a href="/players" class="btn btn-secondary">Cancel</a>
+            <a href="{{route("players.index")}}" class="btn btn-secondary">Cancel</a>
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
