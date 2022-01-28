@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource("players", PlayerController::class);
+Route::resource("players", PlayerController::class)->middleware(['auth']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

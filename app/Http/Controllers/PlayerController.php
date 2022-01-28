@@ -15,6 +15,7 @@ class PlayerController extends Controller
      */
     public function index()
     {
+        $this->authorize("authenticate");
         return view("players.index")->with("players", Player::all());
     }
 
@@ -25,6 +26,8 @@ class PlayerController extends Controller
      */
     public function create()
     {
+        $this->authorize("authenticate");
+        $this->authorize("create");
         return view("players.create");
     }
 
@@ -60,6 +63,7 @@ class PlayerController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize("authenticate");
         $player = Player::find($id);
         return view("players.edit")->with("player", $player);
     }

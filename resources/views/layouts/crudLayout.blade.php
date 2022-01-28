@@ -12,7 +12,23 @@
     <title>Crud</title>
 </head>
 <body>
-<h1 class="bg-primary text-white text-center p-3">CRUD with laravel 8.0</h1>
+
+<nav class="navbar bg-primary">
+    <div class="container">
+        <h1 class="text-white text-center p-3">CRUD with laravel 8.0</h1>
+        @auth
+            <form action="{{route("logout")}}" method="POST">
+                @csrf
+                <button type="submit">Logout</button>
+            </form>
+        @else
+            <div class="d-flex">
+                <a class="nav-link text-white" href="{{route("login")}}">Log In</a>
+                <a class="nav-link text-white" href="{{route("register")}}">Register</a>
+            </div>
+        @endauth
+    </div>
+</nav>
 
 @yield('content')
 
