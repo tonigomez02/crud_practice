@@ -31,7 +31,7 @@
                     @else
                         <td>No</td>
                     @endif
-                    <td>{{$player->description}} $</td>
+                    <td>{{$player->description}}</td>
                     <td>{{$player->salary}} $</td>
                     <td>
                         <form action="/players/{{$player->player_id}}" method="POST">

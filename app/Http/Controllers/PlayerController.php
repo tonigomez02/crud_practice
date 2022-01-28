@@ -36,7 +36,8 @@ class PlayerController extends Controller
      */
     public function store(CreatePlayerRequest $request)
     {
-        $player = Player::create($request->all());
+        $player = new Player();
+        $player->create($request->validated());
         return redirect("/players");
     }
 
@@ -59,7 +60,8 @@ class PlayerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $player = Player::find($id);
+        return view("players.edit")->with("player", $player);
     }
 
     /**
@@ -69,9 +71,11 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreatePlayerRequest $request, $id)
     {
-        //
+        $player = Player::find($id);
+        $player->update($request->validated());
+        return redirect("/players");
     }
 
     /**
@@ -82,6 +86,8 @@ class PlayerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $player = Player::find($id);
+        $player->delete();
+        return redirect("/players");
     }
 }

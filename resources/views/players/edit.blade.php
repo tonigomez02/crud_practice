@@ -13,33 +13,34 @@
             </div>
         @endif
 
-        <form action="/players" method="POST" class="container">
+        <form action="/players/{{$player->player_id}}" method="POST" class="container">
             @csrf
+            @method("PUT")
             <div class="mb-3">
                 <label for="" class="form-label">Name</label>
-                <input id="name" name="name" type="text" class="form-control" value="{{old("name")}}" required>
+                <input id="name" name="name" type="text" class="form-control" value="{{$player->name}}" required>
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Lastname</label>
-                <input id="lastname" name="lastname" type="text" class="form-control" value="{{old("lastname")}}" required>
+                <input id="lastname" name="lastname" type="text" class="form-control" value="{{$player->lastname}}" required>
             </div>
             <div class="mb-3">
                 <p class="text-primary fs-5">Select postion</p>
                 <div class="mb-3 d-flex">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="position" value="G" {{ old('position') == 'G' ? 'checked' : '' }}>
+                        <input class="form-check-input" type="radio" name="position" value="G" {{ $player->position == 'G' ? 'checked' : '' }}>
                         <label class="form-check-label me-2" for="">
                             G
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="position" value="F" {{ old('position') == 'F' ? 'checked' : '' }}>
+                        <input class="form-check-input" type="radio" name="position" value="F" {{ $player->position == 'F' ? 'checked' : '' }}>
                         <label class="form-check-label me-2" for="">
                             F
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="position"  value="C" {{ old('position') == 'C' ? 'checked' : '' }}>
+                        <input class="form-check-input" type="radio" name="position"  value="C" {{ $player->position == 'C' ? 'checked' : '' }}>
                         <label class="form-check-label me-2" for="">
                             C
                         </label>
@@ -47,27 +48,27 @@
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Birthdate</label>
-                    <input id="birthdate" name="birthdate" type="date" class="form-control" value="{{old("birthdate")}}" required>
+                    <input id="birthdate" name="birthdate" type="date" class="form-control" value="{{$player->birthdate}}" required>
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Description</label>
-                    <textarea id="description" name="description" class="form-control">{{old("description")}}</textarea>
+                    <textarea id="description" name="description" class="form-control">{{$player->description}}</textarea>
                 </div>
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Salary</label>
-                <input  name="salary" type="text" class="form-control" value="{{old("salary")}}">
+                <input  name="salary" type="text" class="form-control" value="{{$player->salary}}">
             </div>
             <div class="mb-3">
                 <p class="text-primary fs-5">Retired? (only one option)</p>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="1" {{ old('retired') == 'Yes' ? 'checked' : '' }} name="retired">
+                    <input class="form-check-input" type="checkbox" value="1" {{ $player->retired == '1' ? 'checked' : '' }} name="retired">
                     <label class="form-check-label" for="">
                         Yes
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="0" {{ old('retired') == 'No' ? 'checked' : '' }} name="retired">
+                    <input class="form-check-input" type="checkbox" value="0" {{ $player->retired == '0' ? 'checked' : '' }} name="retired">
                     <label class="form-check-label" for="">
                         No
                     </label>
