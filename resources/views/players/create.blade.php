@@ -61,7 +61,7 @@
             <div class="mb-3">
                 <p class="text-primary fs-5">Retired? (only one option)</p>
                 <div class="form-check">
-                    <input required class="form-check-input" type="checkbox" value="1" {{ old('retired') == 'Yes' ? 'checked' : '' }} name="retired">
+                    <input class="form-check-input" type="checkbox" value="1" {{ old('retired') == 'Yes' ? 'checked' : '' }} name="retired">
                     <label class="form-check-label" for="">
                         Yes
                     </label>
