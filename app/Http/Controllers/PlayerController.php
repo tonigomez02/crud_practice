@@ -11,12 +11,15 @@ class PlayerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
         $this->authorize("authenticate");
-        return view("players.index")->with("players", Player::all());
+        return view("players.index", [
+            "players" => Player::all(),
+            "newPlayer" => new Player
+        ]);
     }
 
     /**
@@ -26,8 +29,10 @@ class PlayerController extends Controller
      */
     public function create()
     {
+        //Gates
         $this->authorize("authenticate");
         $this->authorize("create");
+
         return view("players.create");
     }
 
@@ -64,6 +69,8 @@ class PlayerController extends Controller
     public function edit($id)
     {
         $this->authorize("authenticate");
+        $this->authorize("create");
+
         $player = Player::find($id);
         return view("players.edit")->with("player", $player);
     }

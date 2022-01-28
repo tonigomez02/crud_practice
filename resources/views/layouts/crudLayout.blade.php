@@ -13,13 +13,13 @@
 </head>
 <body>
 
-<nav class="navbar bg-primary">
+<nav class="navbar bg-primary mb-4">
     <div class="container">
         <h1 class="text-white text-center p-3">CRUD with laravel 8.0</h1>
         @auth
-            <form action="{{route("logout")}}" method="POST">
+            <form class="m-0" action="{{route("logout")}}" method="POST">
                 @csrf
-                <button type="submit">Logout</button>
+                <button class="btn btn-danger" type="submit">Logout</button>
             </form>
         @else
             <div class="d-flex">

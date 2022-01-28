@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Policies\PlayerPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -29,8 +30,6 @@ class AuthServiceProvider extends ServiceProvider
             return $user->email !== "";
         });
 
-        Gate::define("create", function ($user){
-           return $user->role === "admin";
-        });
+        Gate::define("create", [PlayerPolicy::class, "create"]);
     }
 }

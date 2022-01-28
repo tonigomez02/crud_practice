@@ -2,8 +2,12 @@
 
 @section('content')
     <div class="container-md">
-        <a href="players/create" class="btn btn-primary mt-5">Add</a>
-
+        @can("create", $newPlayer)
+            <a href="players/create" class="btn btn-primary mt-5">Add</a>
+            <div class="alert alert-success container mt-3">
+                <p class="text-center">You have admin permissions!!</p>
+            </div>
+        @endcan
         <table class="table table-dark table-striped mt-4">
             <thead>
             <tr>
@@ -34,12 +38,16 @@
                     <td>{{$player->description}}</td>
                     <td>{{$player->salary}} $</td>
                     <td>
-                        <form action="/players/{{$player->player_id}}" method="POST">
-                            @method("DELETE")
-                            @csrf
-                            <a href="/players/{{$player->player_id}}/edit" class="btn btn-info">Edit</a>
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+                        @can("create", $newPlayer)
+                            <form action="/players/{{$player->player_id}}" method="POST">
+                                @method("DELETE")
+                                @csrf
+                                <a href="/players/{{$player->player_id}}/edit" class="btn btn-info">Edit</a>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        @else
+                            <p class="text-primary">No actions</p>
+                        @endcan
                     </td>
                 </tr>
             @endforeach
