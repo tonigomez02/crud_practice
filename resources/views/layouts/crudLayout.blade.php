@@ -8,18 +8,24 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    <script src="https://kit.fontawesome.com/2d12050ae0.js" crossorigin="anonymous"></script>
     <title>Crud</title>
 </head>
 <body>
 
 <nav class="navbar bg-primary mb-4">
     <div class="container">
-        <h1 class="text-white text-center p-3">CRUD with laravel 8.0</h1>
+        <div class="d-flex flex-column align-items-center">
+            <h1 class="text-white text-center">@lang("CRUD with laravel 8.0 and bootstrap")</h1>
+            <div>
+                <a href="/set_language/es"><img class="img-fluid" style="width: 40px; height: 40px" src="{{asset("images/spanish.png")}}"></a>
+                <a href="/set_language/en"><img class="img-fluid" style="width: 40px; height: 40px" src="{{asset("images/english.png")}}"></a>
+            </div>
+        </div>
         @auth
             <form class="m-0" action="{{route("logout")}}" method="POST">
                 @csrf
-                <button class="btn btn-danger" type="submit">Logout</button>
+                <button class="btn btn-light" type="submit">@lang("Logout")</button>
             </form>
         @else
             <div class="d-flex">

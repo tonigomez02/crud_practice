@@ -1,4 +1,13 @@
 {
+    "Retired? (only one option)": "Retirado? (Solo una opcion)",
+    "CRUD with laravel 8.0 and bootstrap": "CRUD con laravel 8 y bootstrap",
+    "You have admin permissions!!": "Tienes permisos de administrador",
+    "Lastname": "Apellido",
+    "Position": "Posición",
+    "Birthdate": "Nacimiento",
+    "Retired": "Retirado",
+    "Description": "Descripción",
+    "Salary": "Salario",
     "30 Days": "30 Días",
     "60 Days": "60 Días",
     "90 Days": "90 Días",

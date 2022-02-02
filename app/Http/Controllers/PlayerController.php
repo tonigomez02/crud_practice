@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Player;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreatePlayerRequest;
+use Illuminate\Support\Facades\App;
 
 class PlayerController extends Controller
 {
@@ -101,4 +102,5 @@ class PlayerController extends Controller
         $player->delete();
         return redirect("/players");
     }
+
 }
