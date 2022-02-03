@@ -25,6 +25,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/set_language/{lang}', [PlayerController::class, 'set_language'])->name('set_language');
+Route::get('/set_language/{lang}', [PlayerController::class, 'set_language'])->name('set_language')->middleware("translate");
 
 require __DIR__ . '/auth.php';

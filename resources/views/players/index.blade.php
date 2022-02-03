@@ -46,7 +46,7 @@
                                 <button type="submit" class="btn btn-danger">@lang("Delete")</button>
                             </form>
                         @else
-                            <p class="text-primary">No actions</p>
+                            <p class="text-primary">@lang("No actions")</p>
                         @endcan
                     </td>
                 </tr>

@@ -1,4 +1,5 @@
 {
+    "No actions": "Sin acciones",
     "Retired? (only one option)": "Retirado? (Solo una opcion)",
     "CRUD with laravel 8.0 and bootstrap": "CRUD con laravel 8 y bootstrap",
     "You have admin permissions!!": "Tienes permisos de administrador",
