@@ -1,4 +1,6 @@
 {
+    "Welcome to Anthony's CRUD": "Benvingut al CRUD d'en Toni",
+    "You only can read content": "Només pots llegir el contingut",
     "No actions": "Sense accions",
     "Retired? (only one option)": "Retirat? (Només una acció)",
     "CRUD with laravel 8.0 and bootstrap": "CRUD amb laravel 8 i bootstrap",

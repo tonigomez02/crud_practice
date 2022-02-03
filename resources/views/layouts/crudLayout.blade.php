@@ -24,6 +24,7 @@
             </div>
         </div>
         @auth
+            <p class="text-white m-0">@lang("Welcome") {{auth()->user()->name}}</p>
             <form class="m-0" action="{{route("logout")}}" method="POST">
                 @csrf
                 <button class="btn btn-light" type="submit">@lang("Logout")</button>

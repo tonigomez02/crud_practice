@@ -3,9 +3,13 @@
 @section('content')
     <div class="container-md">
         @can("create", $newPlayer)
-            <a href="{{route("players.create")}}" class="btn btn-primary mt-5">@lang("Add")</a>
             <div class="alert alert-success container mt-3">
-                <p class="text-center">@lang("You have admin permissions!!")</p>
+                <p class="text-center my-2">@lang("You have admin permissions!!")</p>
+            </div>
+            <a href="{{route("players.create")}}" class="btn btn-primary mt-3">@lang("Add")</a>
+        @else
+            <div class="alert alert-success container mt-3">
+                <p class="text-center my-2">@lang("You only can read content")</p>
             </div>
         @endcan
         <table class="table table-white table-striped mt-4">
@@ -36,9 +40,9 @@
                         <td>No</td>
                     @endif
                     <td>{{$player->description}}</td>
-                    <td>{{$player->salary}} $</td>
+                    <td>{{$player->salary}}$</td>
                     <td>
-                        @can("create", $newPlayer)
+                        @can("update", $newPlayer)
                             <form action="/players/{{$player->player_id}}" method="POST">
                                 @method("DELETE")
                                 @csrf
