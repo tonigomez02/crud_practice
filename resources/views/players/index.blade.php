@@ -36,7 +36,7 @@
                         <td>No</td>
                     @endif
                     <td>{{$player->description}}</td>
-                    <td>{{$player->salary}} $</td>
+                    <td>{{$player->salary}}$</td>
                     <td>
                         @can("create", $newPlayer)
                             <form action="/players/{{$player->player_id}}" method="POST">
