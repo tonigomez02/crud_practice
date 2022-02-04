@@ -43,10 +43,10 @@
                     <td>{{$player->salary}}$</td>
                     <td>
                         @can("update", $newPlayer)
-                            <form action="/players/{{$player->player_id}}" method="POST">
+                            <form action="{{route("players.destroy", $player)}}" method="POST">
                                 @method("DELETE")
                                 @csrf
-                                <a href="/players/{{$player->player_id}}/edit" class="btn btn-dark">@lang("Edit")</a>
+                                <a href="{{route("players.edit", $player)}}" class="btn btn-dark">@lang("Edit")</a>
                                 <button type="submit" class="btn btn-danger">@lang("Delete")</button>
                             </form>
                         @else

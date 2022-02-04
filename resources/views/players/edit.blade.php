@@ -13,7 +13,7 @@
             </div>
         @endif
 
-        <form action="/players/{{$player->player_id}}" method="POST" class="container">
+        <form action="{{route("players.update", $player)}}" method="POST" class="container">
             @csrf
             @method("PUT")
             <div class="mb-3">
