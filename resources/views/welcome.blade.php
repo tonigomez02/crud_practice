@@ -1,8 +1,3 @@
-{{--@extends('layouts.crudLayout')
-
-@section('content')
-
-@endsection--}}
     <!doctype html>
 <html lang="en">
 <head>

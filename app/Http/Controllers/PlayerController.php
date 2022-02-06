@@ -6,6 +6,7 @@ use App\Models\Player;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreatePlayerRequest;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Storage;
 
 class PlayerController extends Controller
 {
@@ -41,20 +42,30 @@ class PlayerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function store(CreatePlayerRequest $request)
     {
-        $player = new Player();
-        $player->create($request->validated());
+        //Gates
+        $this->authorize("authenticate");
+        $this->authorize("create");
+
+        $player = new Player($request->validated());
+        if ($player->image){
+            $player->image = $request->file("image")->store("images", "public");
+            $player->save();
+        }else{
+            $player->save();
+        }
+
         return redirect("/players");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -65,7 +76,7 @@ class PlayerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -80,27 +91,54 @@ class PlayerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(CreatePlayerRequest $request, $id)
     {
+        //Gates
+        $this->authorize("authenticate");
+        $this->authorize("create");
+
         $player = Player::find($id);
-        $player->update($request->validated());
+
+        if ($request->image === "/images/nba-logo.jpg") {
+            $player = $player->fill($request->validated());
+            $player->image = $request->file("image");
+
+            $player->save();
+        }else if ($request->hasFile("image")){
+            Storage::disk("public")->delete($player->image);
+
+            $player = $player->fill($request->validated());
+            $player->image = $request->file("image")->store("images", "public");
+
+            $player->save();
+        } else {
+            $player->update(array_filter($request->validated()));
+        }
+
         return redirect("/players");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
+        //Gates
+        $this->authorize("authenticate");
+        $this->authorize("create");
+
         $player = Player::find($id);
+
+        Storage::delete($player->image);
         $player->delete();
+
         return redirect("/players");
     }
 

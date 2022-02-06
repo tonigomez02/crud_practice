@@ -18,9 +18,9 @@
         <div class="d-flex flex-column align-items-center">
             <h1 class="text-white text-center">@lang("CRUD with laravel 8.0 and bootstrap")</h1>
             <div>
-                <a href="/set_language/es"><img class="img-fluid" style="width: 50px; height: 45px" src="{{asset("images/spanish.png")}}"></a>
-                <a href="/set_language/en"><img class="img-fluid" style="width: 50px; height: 45px" src="{{asset("images/english.png")}}"></a>
-                <a href="/set_language/ca"><img class="img-fluid" style="width: 50px; height: 35px" src="{{asset("images/img.png")}}"></a>
+                <a href="{{route("set_language", "es")}}"><img class="img-fluid" style="width: 50px; height: 45px" src="{{asset("images/spanish.png")}}"></a>
+                <a href="{{route("set_language", "en")}}"><img class="img-fluid" style="width: 50px; height: 45px" src="{{asset("images/english.png")}}"></a>
+                <a href="{{route("set_language", "ca")}}"><img class="img-fluid" style="width: 50px; height: 35px" src="{{asset("images/img.png")}}"></a>
             </div>
         </div>
         @auth

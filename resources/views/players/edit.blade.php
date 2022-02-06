@@ -13,9 +13,13 @@
             </div>
         @endif
 
-        <form action="{{route("players.update", $player)}}" method="POST" class="container">
+        <form action="{{route("players.update", $player)}}" method="POST" class="container" enctype="multipart/form-data">
             @csrf
             @method("PUT")
+            <div class="mb-3">
+                <label for="" class="form-label">@lang("Image")</label>
+                <input id="image" name="image" type="file" class="form-control" value="{{old("image")}}">
+            </div>
             <div class="mb-3">
                 <label for="" class="form-label">@lang("Name")</label>
                 <input id="name" name="name" type="text" class="form-control" value="{{$player->name}}" required>

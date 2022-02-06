@@ -32,7 +32,8 @@ class CreatePlayerRequest extends FormRequest
             'birthdate' => 'required',
             'description' => 'max:100',
             'salary' => 'required | max:10 |',
-            'retired' => 'boolean'
+            'retired' => 'boolean',
+            "image" => "image | nullable"
         ];
     }
 }
