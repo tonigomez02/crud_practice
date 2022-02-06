@@ -17,17 +17,17 @@
     <div class="container">
         <div class="d-flex flex-column align-items-center">
             <h1 class="text-white text-center">@lang("CRUD with laravel 8.0 and bootstrap")</h1>
-            <div>
-                <a href="{{route("set_language", "es")}}"><img class="img-fluid" style="width: 50px; height: 45px" src="{{asset("images/spanish.png")}}"></a>
-                <a href="{{route("set_language", "en")}}"><img class="img-fluid" style="width: 50px; height: 45px" src="{{asset("images/english.png")}}"></a>
-                <a href="{{route("set_language", "ca")}}"><img class="img-fluid" style="width: 50px; height: 35px" src="{{asset("images/img.png")}}"></a>
+            <div class="d-flex align-items-center">
+                <a href="{{route("set_language", "es")}}"><img class="img-fluid me-2" style="width: 50px;" src="{{asset("images/spanish.png")}}"></a>
+                <a href="{{route("set_language", "en")}}"><img class="img-fluid me-2" style="width: 50px;" src="{{asset("images/english.png")}}"></a>
+                <a href="{{route("set_language", "ca")}}"><img class="img-fluid me-2" style="width: 50px;" src="{{asset("images/catalan.png")}}"></a>
             </div>
         </div>
         @auth
-            <p class="text-white m-0">@lang("Welcome") {{auth()->user()->name}}</p>
-            <form class="m-0" action="{{route("logout")}}" method="POST">
+            <form class="m-0 align-items-center d-flex flex-column" action="{{route("logout")}}" method="POST">
                 @csrf
                 <button class="btn btn-light" type="submit">@lang("Logout")</button>
+                <p class="text-white m-0 mt-2">@lang("Welcome") {{auth()->user()->name}}</p>
             </form>
         @else
             <div class="d-flex">

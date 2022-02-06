@@ -24,10 +24,10 @@
                              alt="...">
                     @endif
                     <div class="card-body d-flex flex-column align-items-center">
-                        <h5 class="card-title">{{$player->name}} {{$player->lastname}}</h5>
+                        <h4 class="card-title">{{$player->name}} {{$player->lastname}}</h4>
+                        <p class="card-text">{{$player->description}}</p>
                         <p>Position: {{$player->position}}</p>
                         <p>Birthdate: {{$player->birthdate}}</p>
-                        <p class="card-text">{{$player->description}}</p>
                         @if($player->retired === true)
                             <p>Retired</p>
                         @else
