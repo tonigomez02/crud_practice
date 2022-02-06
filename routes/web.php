@@ -19,6 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::fallback([PlayerController::class, "index"])->middleware(["auth"]);
+
+
 Route::resource("players", PlayerController::class)->middleware(['auth']);
 
 Route::get('/dashboard', function () {

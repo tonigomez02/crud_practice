@@ -12,13 +12,21 @@
     <title>Crud</title>
 </head>
 <body>
-<nav class="navbar navbar-light bg-primary  p-1">
+<nav class="navbar navbar-light bg-primary  p-3">
     <div class="container-fluid d-flex ">
         <a class="navbar-brand text-white" href="#">Crud</a>
+        @guest()
         <div class="d-flex aliign-items-center p-3">
             <a class="nav-link text-dark fs-5 text-white" href="{{route("login")}}">@lang("Log In")</a>
             <a class="nav-link text-dark fs-5 text-white" href="{{route("register")}}">@lang("Register")</a>
         </div>
+        @else
+            <form class="m-0 align-items-center d-flex flex-column" action="{{route("logout")}}" method="POST">
+                @csrf
+                <button class="btn btn-light" type="submit">@lang("Logout")</button>
+                <p class="text-white m-0 mt-2">@lang("Welcome") {{auth()->user()->name}}</p>
+            </form>
+        @endguest
     </div>
 </nav>
 
@@ -35,6 +43,7 @@
                 malesuada nisl lobortis eget. Phasellus quis nunc a tellus semper accumsan ac vel dui. Proin sed luctus
                 dui. Donec sit amet velit euismod, tincidunt magna ut, mattis turpis. Vivamus enim dui, fringilla et
                 orci id, venenatis posuere. </p>
+            @guest()
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                 <button type="button" class="btn btn-primary btn-lg px-4 me-md-2"><a class="nav-link text-white"
                                                                                      href="{{route("login")}}">@lang("Log In")</a>
@@ -43,6 +52,13 @@
                                                                                        href="{{route("register")}}">@lang("Register")</a>
                 </button>
             </div>
+            @else
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <button type="button" class="btn btn-primary btn-lg px-4 me-md-2"><a class="nav-link text-white"
+                                                                                         href="{{route("players.index")}}">@lang("Players")</a>
+                    </button>
+                </div>
+            @endguest
         </div>
     </div>
 </div>
