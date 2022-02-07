@@ -21,6 +21,9 @@ Route::get('/', function () {
 
 Route::fallback([PlayerController::class, "index"])->middleware(["auth"]);
 
+Route::get("/storage/{image}", function ($image){
+    return "/storage/"+ $image;
+})->name("image");
 
 Route::resource("players", PlayerController::class)->middleware(['auth']);
 

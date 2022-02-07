@@ -17,7 +17,7 @@
             @foreach($players as $player)
                 <div class="card mt-4" style="width: 20rem;">
                 @if($player->image)
-                        <img src="/storage/{{$player->image}}" class="card-img-top " style="width: 100%; height: 13rem"
+                        <img src="{{route("image", $player->image)}}" class="card-img-top " style="width: 100%; height: 13rem"
                              alt="...">
                     @else
                         <img src="{{asset("storage/images/nba-logo.jpg")}}" class="card-img-top " style="width: 100%; height: 12rem"
