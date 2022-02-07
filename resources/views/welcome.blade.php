@@ -12,11 +12,11 @@
     <title>Crud</title>
 </head>
 <body>
-<nav class="navbar navbar-light bg-primary  p-3">
+<nav class="navbar navbar-light bg-primary p-md-3" style="height: 12vh">
     <div class="container-fluid d-flex ">
         <a class="navbar-brand text-white" href="#">Crud</a>
         @guest()
-        <div class="d-flex aliign-items-center p-3">
+        <div class="d-flex aliign-items-center p-md-3">
             <a class="nav-link text-dark fs-5 text-white" href="{{route("login")}}">@lang("Log In")</a>
             <a class="nav-link text-dark fs-5 text-white" href="{{route("register")}}">@lang("Register")</a>
         </div>
@@ -30,13 +30,13 @@
     </div>
 </nav>
 
-<div class="container col-xxl-8 px-4 py-5">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-        <div class="col-10 col-sm-8 col-lg-6">
+<div class="container col-xxl-8 px-4 py-5 d-flex justify-content-center" style="height: 88vh">
+    <div class="row flex-md-row-reverse align-items-center g-5 py-5">
+        <div class="col-12 col-lg-6">
             <img src="{{asset("/images/nba-logo.png")}}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes"
-                 width="700" height="500" loading="lazy">
+                  style="width: 100%" loading="lazy">
         </div>
-        <div class="col-lg-6">
+        <div class="col-12 col-lg-6">
             <h1 class="display-5 fw-bold lh-1 mb-3">@lang("Welcome to Anthony's CRUD")</h1>
             <p class="lead">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum finibus pellentesque tellus, ac

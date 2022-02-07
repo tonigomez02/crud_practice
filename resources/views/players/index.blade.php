@@ -1,23 +1,23 @@
 @extends('layouts.crudLayout')
 
 @section('content')
-    <div class="container-md">
+    <div class="container-lg d-flex flex-column align-items-center">
         @can("create", $newPlayer)
-            <div class="alert alert-success container mt-3">
+            <div class="alert alert-success container-lg mt-3">
                 <p class="text-center my-2">@lang("You have admin permissions!!")</p>
             </div>
-            <a href="{{route("players.create")}}" class="btn btn-primary mt-3">@lang("Add")</a>
+            <a href="{{route("players.create")}}" class="btn btn-primary mt-3 px-3" style="width:fit-content ">@lang("Add")</a>
         @else
             <div class="alert alert-success container mt-3">
-                <p class="text-center my-2">@lang("You only can read content")</p>
+                <p class="text-center my-2 ">@lang("You only can read content")</p>
             </div>
         @endcan
 
-        <div class="container d-flex justify-content-between flex-wrap mb-5">
+        <div class="container-md d-flex flex-column flex-md-row justify-content-md-between align-items-center align-items-md-start flex-wrap mb-5">
             @foreach($players as $player)
                 <div class="card mt-4" style="width: 20rem;">
                 @if($player->image)
-                        <img src="/storage/{{$player->image}}" class="card-img-top " style="width: 100%; height: 12rem"
+                        <img src="/storage/{{$player->image}}" class="card-img-top " style="width: 100%; height: 13rem"
                              alt="...">
                     @else
                         <img src="{{asset("storage/images/nba-logo.jpg")}}" class="card-img-top " style="width: 100%; height: 12rem"
@@ -33,7 +33,7 @@
                         @else
                             <p>Active</p>
                         @endif
-                        @can("update", $newPlayer)
+                        @can("create", $newPlayer)
                             <form action="{{route("players.destroy", $player)}}" method="POST">
                                 @method("DELETE")
                                 @csrf
@@ -50,7 +50,7 @@
         </div>
 
         @can("create", $newPlayer)
-            <table class="table table-white table-striped mt-5 mb-5">
+            <table class="table table-white table-striped mt-5 mb-5 d-none d-lg-table">
                 <thead>
                 <tr>
                     <th scope="col">ID</th>

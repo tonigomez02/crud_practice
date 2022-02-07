@@ -31,5 +31,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define("create", [PlayerPolicy::class, "create"]);
+        Gate::define("update", [PlayerPolicy::class, "update"]);
+        Gate::define("delete", [PlayerPolicy::class, "delete"]);
     }
 }

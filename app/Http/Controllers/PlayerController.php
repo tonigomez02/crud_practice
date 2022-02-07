@@ -136,7 +136,7 @@ class PlayerController extends Controller
 
         $player = Player::find($id);
 
-        Storage::delete($player->image);
+        Storage::disk("public")->delete($player->image);
         $player->delete();
 
         return redirect("/players");

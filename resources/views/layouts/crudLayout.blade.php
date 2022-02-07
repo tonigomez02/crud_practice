@@ -14,7 +14,7 @@
 <body>
 
 <nav class="navbar bg-primary mb-4">
-    <div class="container">
+    <div class="container d-flex flex-column flex-md-row align-items-lg-center">
         <div class="d-flex flex-column align-items-center">
             <h1 class="text-white text-center">@lang("CRUD with laravel 8.0 and bootstrap")</h1>
             <div class="d-flex align-items-center">
@@ -27,7 +27,7 @@
             <form class="m-0 align-items-center d-flex flex-column" action="{{route("logout")}}" method="POST">
                 @csrf
                 <button class="btn btn-light" type="submit">@lang("Logout")</button>
-                <p class="text-white m-0 mt-2">@lang("Welcome") {{auth()->user()->name}}</p>
+                <p class="text-white m-0 mt-2 d-none d-lg-block">@lang("Welcome") {{auth()->user()->name}}</p>
             </form>
         @else
             <div class="d-flex">
