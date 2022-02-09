@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\PlayerController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/set_language/{lang}', [PlayerController::class, 'set_language'])->name('set_language')->middleware("translate");
+Route::get('/set_language/{lang}', [Controller::class, 'set_language'])->name('set_language')->middleware("translate");
 
 require __DIR__ . '/auth.php';
