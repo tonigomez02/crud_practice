@@ -55,8 +55,9 @@ class PlayerController extends Controller
 
         $player = new Player($request->validated());
         $player->user_id = Auth::user()->id;
+
         if ($player->image){
-            $player->image = $request->file("image")->store("images", "public");
+            $player->image = $request->file("image")->storeAs("images", $player->image->getClientOriginalName(), "public");
             $player->save();
         }else{
             $player->save();
@@ -114,14 +115,14 @@ class PlayerController extends Controller
 
         if ($request->image === "/images/nba-logo.jpg") {
             $player = $player->fill($request->validated());
-            $player->image = $request->file("image");
+            $player->image = $request->file("image")->storeAs("images", $player->image->getClientOriginalName(), "public");
 
             $player->save();
         }else if ($request->hasFile("image")){
             Storage::disk("public")->delete($player->image);
 
             $player = $player->fill($request->validated());
-            $player->image = $request->file("image")->store("images", "public");
+            $player->image = $request->file("image")->storeAs("images", $player->image->getClientOriginalName(), "public");
 
             $player->save();
         } else {
