@@ -16,6 +16,7 @@ class PlayerSeeder extends Seeder
     public function run()
     {
         DB::table('players')->insert([
+            'user_id' => 1,
             'name' => "Magic",
             'lastname' => "Johnson",
             'position' => "G",
@@ -26,10 +27,11 @@ class PlayerSeeder extends Seeder
         ]);
 
 
-        DB::insert("insert into players (name, lastname, position, birthdate, description, retired, salary)
-                          values ('Kawhi', 'Leonard', 'F', '1991-06-29', 'The Klaw', false, 40213453)");
+        DB::insert("insert into players (user_id, name, lastname, position, birthdate, description, retired, salary)
+                          values (1, 'Kawhi', 'Leonard', 'F', '1991-06-29', 'The Klaw', false, 40213453)");
 
         $player = new Player();
+        $player->user_id = 1;
         $player->name = "Kevin";
         $player->lastname = "Durant";
         $player->position = "F";

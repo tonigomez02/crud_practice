@@ -15,6 +15,7 @@ class CreatePlayersTable extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->id("player_id");
+            $table->unsignedBigInteger("user_id")->nullable();
             $table->string("name");
             $table->string("lastname");
             $table->string("position");
@@ -23,6 +24,10 @@ class CreatePlayersTable extends Migration
             $table->boolean("retired");
             $table->integer("salary")->nullable();
             $table->timestamps();
+
+            $table->foreign("user_id")->references("id")->on("users")
+                ->onUpdate("cascade")
+                ->onDelete("set null");
         });
     }
 

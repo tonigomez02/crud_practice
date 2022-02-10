@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Player;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreatePlayerRequest;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PlayerController extends Controller
@@ -19,8 +21,11 @@ class PlayerController extends Controller
     {
         $this->authorize("authenticate");
 
+        $user_id = Auth::user()->id;
+        $players = Player::where("user_id", $user_id)->get();
+
         return view("players.index", [
-            "players" => Player::all(),
+            "players" => $players,
             "newPlayer" => new Player
         ]);
     }
@@ -34,8 +39,6 @@ class PlayerController extends Controller
     {
         //Gates
         $this->authorize("authenticate");
-        $this->authorize("create");
-
         return view("players.create");
     }
 
@@ -49,9 +52,9 @@ class PlayerController extends Controller
     {
         //Gates
         $this->authorize("authenticate");
-        $this->authorize("create");
 
         $player = new Player($request->validated());
+        $player->user_id = Auth::user()->id;
         if ($player->image){
             $player->image = $request->file("image")->store("images", "public");
             $player->save();
@@ -66,11 +69,17 @@ class PlayerController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $this->authorize("authenticate");
+        $player = Player::find($id);
+
+        return view("players.show", [
+            "player" => $player,
+            "newPlayer" => new Player
+        ]);
     }
 
     /**
