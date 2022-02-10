@@ -6,7 +6,7 @@
             <div class="alert alert-success container-lg mt-3">
                 <p class="text-center my-2">@lang("You have admin permissions!!")</p>
             </div>
-
+            <a href="{{route("players.create")}}" class="btn btn-primary mt-3 px-3" style="width:fit-content ">@lang("Add")</a>
         @else
             <div class="alert alert-success container mt-3">
                 <p class="text-center my-2 ">@lang("You only can read content")</p>
