@@ -14,7 +14,7 @@ class AddImageFieldToPlayersTable extends Migration
     public function up()
     {
         Schema::table('players', function (Blueprint $table) {
-            $table->string("image")->after("id")->nullable();
+            $table->string("image")->after("player_id")->nullable();
         });
     }
 
